@@ -6,17 +6,20 @@ using UnityEngine.UIElements;
 public class GameManagerScript : MonoBehaviour
 {
     public GameObject block;
+    public GameObject goal;
 
     // Start is called before the first frame update
     void Start()
     {
+        Screen.SetResolution(1920, 1080, false);
+
         Vector3 position = Vector3.zero;
         Instantiate(block, position, Quaternion.identity);
 
         int[,] map =
         {
            {1,0,0,0,0,0,0,0,0,1 },
-           {1,0,0,0,0,0,0,0,0,1 },
+           {1,0,0,0,0,0,2,0,0,1 },
            {1,0,0,0,0,0,0,0,0,1 },
            {1,0,0,0,0,0,0,0,1,1 },
            {1,0,0,0,0,0,0,0,0,1 },
@@ -41,6 +44,11 @@ public class GameManagerScript : MonoBehaviour
                 if (map[y, x] == 1)
                 {
                     Instantiate(block, position, Quaternion.identity);
+                }
+
+                if (map[y,x] == 2)
+                {
+                    goal.transform.position = position;
                 }
             }
         }

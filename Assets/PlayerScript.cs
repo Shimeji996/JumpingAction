@@ -16,20 +16,26 @@ public class PlayerScript : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 v = rb.velocity;
+        if(GoalScript.isGameClear ==  false)
+        {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                v.y = 5;
+            }
 
-        if (Input.GetKey(KeyCode.Space))
-        {
-            v.y = 5;
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                v.x = 5;
+            }
+            else if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                v.x = -5;
+            }
+            rb.velocity = v;
         }
-
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            v.x = 5;
+        else {
+            // Rigidbody‚ð‚Æ‚ß‚é
+            rb.isKinematic = true;
         }
-        else if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            v.x = -5;
-        }
-        rb.velocity = v;
     }
 }
