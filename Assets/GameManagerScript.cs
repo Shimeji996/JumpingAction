@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using TMPro;
 
 public class GameManagerScript : MonoBehaviour
 {
     public GameObject block;
     public GameObject goal;
+    public GameObject coin;
+    public TextMeshProUGUI scoreText;
+    public static int score = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -21,10 +25,10 @@ public class GameManagerScript : MonoBehaviour
            {1,0,0,0,0,0,0,0,0,1 },
            {1,0,0,0,0,0,2,0,0,1 },
            {1,0,0,0,0,0,0,0,0,1 },
-           {1,0,0,0,0,0,0,0,1,1 },
+           {1,0,0,0,0,0,3,0,1,1 },
            {1,0,0,0,0,0,0,0,0,1 },
            {1,0,0,0,0,1,1,0,0,1 },
-           {1,0,0,1,0,0,0,0,0,1 },
+           {1,0,0,1,3,0,0,3,0,1 },
            {1,0,0,0,0,0,0,0,0,1 },
            {1,0,0,0,0,0,0,0,0,1 },
            {1,1,1,1,1,1,1,1,1,1 },
@@ -50,6 +54,11 @@ public class GameManagerScript : MonoBehaviour
                 {
                     goal.transform.position = position;
                 }
+
+                if (map[y,x] == 3)
+                {
+                    Instantiate(coin, position, Quaternion.identity);
+                }
             }
         }
     }
@@ -57,6 +66,6 @@ public class GameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        scoreText.text = "SCORE" + score;
     }
 }
