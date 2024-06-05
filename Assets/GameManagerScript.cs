@@ -7,9 +7,11 @@ using TMPro;
 public class GameManagerScript : MonoBehaviour
 {
     public GameObject block;
+    public GameObject block2;
     public GameObject goal;
     public GameObject coin;
     public TextMeshProUGUI scoreText;
+    public GameObject goalParticle;
     public static int score = 0;
 
     // Start is called before the first frame update
@@ -53,12 +55,15 @@ public class GameManagerScript : MonoBehaviour
                 if (map[y,x] == 2)
                 {
                     goal.transform.position = position;
+                    goalParticle.transform.position = position;
                 }
 
                 if (map[y,x] == 3)
                 {
                     Instantiate(coin, position, Quaternion.identity);
                 }
+
+                Instantiate(block2, new Vector3(x, -y + 5, 1), Quaternion.identity);
             }
         }
     }
