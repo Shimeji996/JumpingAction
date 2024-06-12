@@ -27,7 +27,7 @@ public class GoalScript : MonoBehaviour
     {
         if(GoalScript.isGameClear == true)
         {
-            if(Input.GetKeyDown(KeyCode.Space))
+            if(Input.GetButtonDown("Jump"))
             {
                 SceneManager.LoadScene("TitleScene");
             }

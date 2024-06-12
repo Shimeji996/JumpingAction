@@ -40,6 +40,8 @@ public class PlayerScript : MonoBehaviour
         float distance = 0.9f;
         Debug.DrawRay(rayPosition, Vector3.down * distance, Color.red);
 
+        float stick = Input.GetAxis("Horizontal");
+
         isBlock = Physics.Raycast(ray, distance);
 
         if (GoalScript.isGameClear ==  false)
@@ -48,7 +50,7 @@ public class PlayerScript : MonoBehaviour
             {
                 animator.SetBool("Jump", false);
                 //Debug.DrawRay(rayPosition, Vector3.down * distance, Color.red);
-                if (Input.GetKey(KeyCode.Space))
+                if (Input.GetButtonDown("Jump"))
                 {
                     v.y = 8;
                 }
@@ -59,13 +61,13 @@ public class PlayerScript : MonoBehaviour
                 //Debug.DrawRay(rayPosition, Vector3.down * distance, Color.yellow);
             }
 
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.RightArrow) || stick > 0)
             {
                 transform.rotation = Quaternion.Euler(0, 90, 0);
                 v.x = 5;
                 animator.SetBool("Walk", true);
             }
-            else if (Input.GetKey(KeyCode.LeftArrow))
+            else if (Input.GetKey(KeyCode.LeftArrow) || stick < 0)
             {
                 transform.rotation = Quaternion.Euler(0, -90, 0);
                 v.x = -5;

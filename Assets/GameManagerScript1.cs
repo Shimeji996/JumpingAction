@@ -29,7 +29,7 @@ public class GameManagerScript1 : MonoBehaviour
         }
 
 
-        if(Input.GetKeyDown(KeyCode.Space)) 
+        if(Input.GetButtonDown("Jump")) 
         {
             SceneManager.LoadScene(nextSceneName);
         }
